@@ -1,0 +1,11 @@
+first_node=j-062
+second_node=j-031
+port1=2222
+port2=2223
+port3=2224
+
+#please don't change below
+worker1=$first_node:$port1
+worker2=$second_node:$port2
+parameter_server=$first_node:$port3
+

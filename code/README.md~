@@ -1,0 +1,74 @@
+# Apache Spark Execution Instructions
+
+## To install and run the Apache Spark code follow the below steps.
+
+	a. Configure Apache Spark with YARN on Hadoop in your distributed environment
+
+	b. From the code/source-code/spark folder run the createTrainingFile.py to merge the seperate files into 1 file - mnistTraining_Data.txt
+
+	c. Upload the files mnistTraining_Data.txt and mnistTesting_Data.txt files from code/input_data/spark folder into hdfs in folder user/data
+
+	d. In run.sh spark-submit we have additional parameters after createNN.py which are explained below
+
+			.. createNN.py <numberOfHiddenLayers> <hiddenLayer1> .. <hiddenLayerN> <epochs> <tol>
+
+			<numberOfHiddenLayers> : How many hidden layers you want to configure between input layer of 784 neurons and output layer of 10 neurons
+			<hiddenLayer1> .. <hiddenLayerN> : Number of neurons in each hidden layer seperated by space
+			<epochs> : For how many iterations you wish to train the network
+			<tol> : What is the tolerence of error 
+
+	e. Execute run.sh from code/source-code/spark folder. The results will be stored in code/output_data/spark/log.txt
+ 
+
+# TensorFlow
+
+## Installation Instructions
+
+If TensorFlow is not installed for the user on the allotted node, run the following command
+```
+pip install --upgrade --user tensorflow
+```
+
+If Keras is not installed for the user on the allotted node, run the following command
+
+```
+pip install --upgrade --user keras
+```
+
+## Different files in source code
+
+#### config.txt
+Specify worker and parameter server details with node and port information.
+
+#### tf-server-setup.py
+Contains code for assigning job type and task index to the workers and parameter servers by creating a 'ClusterSpec' object and passing 'ClusterSpec' object to 'Server' object to identify the local task with job name and task index
+
+#### start-server.py 
+We stat server for each task by running this file. Running this file activates the nodes we have configured in config.txt
+
+#### stop-server.py 
+This file kills the task we have started by using start-server.py after execution of our neural network code
+
+#### run-nn.sh 
+this file contains the hyperparameter we are tuning for the experiment. For trying different Neural network architecture we have to make changes in this code and run it
+
+## Execution Instructions
+
+### Steps:
+Start the servers using the following code.
+```
+./start-server.py
+```
+
+Once the node is up, start the neural network training by using the following command
+```
+./run-nn.sh
+```
+   Note: For changing the Neural network architecture as well as number of epochs make changes to this file.
+
+Once the execution of neural network is complete and the output file is saved in the output folder. Kill the tasks by using the following command
+```
+./stop-server.py
+```
+Note: Sample outputs for all the test-cases run are present in the output folder
+ 

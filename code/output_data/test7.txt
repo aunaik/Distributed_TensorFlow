@@ -1,0 +1,18 @@
+Layers Dimensions = [784 150  50  25  10]
+Learning rate = 0.01
+Number of epochs = 10
+
+Cost after epoch 0: 0.047988
+Cost after epoch 1: 0.028893
+Cost after epoch 2: 0.023990
+Cost after epoch 3: 0.021255
+Cost after epoch 4: 0.019549
+Cost after epoch 5: 0.018027
+Cost after epoch 6: 0.016499
+Cost after epoch 7: 0.015734
+Cost after epoch 8: 0.015772
+Cost after epoch 9: 0.013248
+
+Train Accuracy: 98.3666658401%
+Test Accuracy: 96.9799995422%
+Calculation time: 46.61 secs
